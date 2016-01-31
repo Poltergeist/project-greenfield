@@ -1,0 +1,27 @@
+{
+  "name": "project-greenfield",
+  "version": "0.0.1",
+  "description": "This is a tech demo and playground of my current and future tech stack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jade": "jade src/jade/*.jade -o build/",
+    "dev": "browser-sync start --config bs-config.js",
+    "watch": "nodemon --exec 'npm run jade' src/jade/*.jade"
+  },
+  "author": "sp3c1",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "browser-sync": "^2.11.1",
+    "enzyme": "^1.4.1",
+    "jade": "^1.11.0",
+    "mocha": "^2.4.5",
+    "nodemon": "^1.8.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "stylus": "^0.53.0",
+    "unexpected": "^10.8.1",
+    "unexpected-react": "^0.5.1"
+  }
+}

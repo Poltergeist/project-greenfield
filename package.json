@@ -4,10 +4,21 @@
   "description": "This is a tech demo and playground of my current and future tech stack.",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -rf build/*",
+    "clean:dist": "rm -rf dist/*",
+    "mkdirs": "mkdir -p build/{scripts,styles}",
+    "mkdirs:dist": "mkdir -p dist/{scripts,styles}",
+    "prepare": "npm run clean && npm run mkdirs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "jade": "jade src/jade/*.jade -o build/",
-    "dev": "browser-sync start --config bs-config.js",
-    "watch": "nodemon --exec 'npm run jade' src/jade/*.jade"
+    "stylus": "stylus src/stylus/main.styl -o build/styles",
+    "stylus:dev": "npm run stylus -- --sourcemap-inline",
+    "server": "npm run prepare && npm run prepare:assets && browser-sync start --config bs-config.js",
+    "dev": "npm run server & npm run watch",
+    "prepare:assets": "npm run jade && npm run stylus:dev",
+    "jade:watch": "nodemon --exec 'npm run jade' -w src/jade -e jade",
+    "stylus:watch": "nodemon --exec 'npm run stylus:dev' --watch src/stylus -e styl",
+    "watch": "npm run jade:watch & npm run stylus:watch"
   },
   "author": "sp3c1",
   "license": "MIT",
